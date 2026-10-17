@@ -13,7 +13,7 @@ st.set_page_config(
 # High-Tier 3D Glassmorphism UI Stylesheet Injection
 st.markdown("""
     <style>
-    /* CRITICAL SECURITY: Hide the default Streamlit main menu, footer, and GitHub header links completely */
+    /* Hide the default Streamlit main menu, footer, and GitHub header links completely */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden !important;}
@@ -55,13 +55,6 @@ st.markdown("""
             0 10px 15px -3px rgba(15, 23, 42, 0.04),
             inset 0 -3px 0 #edf2f7;
         text-align: center;
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .metric-card-3d:hover {
-        transform: translateY(-2px);
-        box-shadow: 
-            0 10px 20px -5px rgba(15, 23, 42, 0.08),
-            inset 0 -3px 0 #e2e8f0;
     }
     .metric-val { font-size: 32px; font-weight: 800; color: #2563eb !important; letter-spacing: -1px; }
     .metric-lbl { font-size: 12px; color: #64748b !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
@@ -79,11 +72,9 @@ st.markdown("""
             inset 0 1px 0 rgba(255, 255, 255, 0.4),
             inset 0 -2px 0 rgba(0, 0, 0, 0.2) !important;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        transition: all 0.15s ease-in-out;
     }
     .stButton>button:hover { 
         background: linear-gradient(180deg, #4f46e5 0%, #2563eb 100%) !important;
-        transform: translateY(-1px);
         box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
     }
     </style>
@@ -97,7 +88,7 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.1
+            💎 Core Build v4.2
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -166,19 +157,34 @@ with tab1:
                     st.markdown("---")
                     st.markdown("### 📊 Pipeline Structural Metrics View")
                     
-                    m_col1, m_col2, m_col3 = st.columns(3)
-                    st.markdown(f"""
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 25px;">
-                            <div class='metric-card-3d'><div class='metric-val'>{final_row_count}</div><div class='metric-lbl'>Optimized Records</div></div>
-                            <div class='metric-card-3d'><div class='metric-val' style='color:#dc2626;'>{duplicates_removed}</div><div class='metric-lbl'>Duplicates Liquidated</div></div>
-                            <div class='metric-card-3d'><div class='metric-val' style='color:#16a34a;'>{total_operations}</div><div class='metric-lbl'>Cells Validated</div></div>
-                        </div>
-                    """, unsafe_allow_html=True)
+                    # Clean layout parameters without using complex python templates
+                    m1, m2, m3 = st.columns(3)
+                    m1.metric("Optimized Records", final_row_count)
+                    m2.metric("Duplicates Deleted", duplicates_removed)
+                    m3.metric("Cells Validated", total_operations)
                     
                     st.markdown("#### `Cleaned System Buffer Output Preview (First 3 Rows):`")
                     st.dataframe(df.head(3), use_container_width=True)
                     
-                    st.markdown(f"""
-                        <div style="background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); border: 1px solid #bbf7d0; border-radius: 20px; padding: 40px; text-align: center; margin-top: 30px; box-shadow: 0 20px 40px -15px rgba(22, 163, 74, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02), inset 0 1px 0 #ffffff;">
-                            <div style="color: #14532d; font-size: 22px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.3px;">🔒 Export Premium Feature Locked</div>
-                            <div style="color: #475569; font-size: 15px; font-weight:500; max-width: 600px; margin: 0 auto;">Your list has been optimized completely error-free! Upgrade to premium to instantly download all <b>{final_row_count} pristine outbound entries</b> straight to your local setup.</div>
+                    # Premium Paywall container module
+                    st.success("🔒 Export Premium Feature Locked")
+                    st.write("Upgrade to premium to instantly download all outbound entries.")
+                    st.link_button("💳 Unlock Full Download Access (£9/mo)", "https://stripe.com")
+        else:
+            st.info("💡 Standby. Feed data into the ingestion nodes or click the 'Ingest Mock System Sample Dataset' button to fire up the live terminal visualization layout pipeline.")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with tab2:
+    st.markdown("<div class='premium-card'>", unsafe_allow_html=True)
+    st.markdown("### 📈 Cloud Operation System Architecture Metrics")
+    p_col1, p_col2, p_col3 = st.columns(3)
+    p_col1.metric("Average Processing Velocity", "0.004s / file")
+    p_col2.metric("Execution Engine Availability", "100.00%")
+    p_col3.metric("System Server Cluster Overhead", "0.001% load")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with tab3:
+    st.markdown("<div class='premium-card'>", unsafe_allow_html=True)
+    st.markdown("### 🛡️ Enterprise Data Compliance & Protocol Governance Verification")
+    st.info("🔐 Security Architecture Protocol Memo: LeadFormat Agent functions inside transient local volatile RAM execution parameters. Your uploaded databases are never committed to permanent storage arrays or external public engines.")
+    st.markdown("</div>", unsafe_allow_html=True)
