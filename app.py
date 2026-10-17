@@ -200,7 +200,7 @@ with tab1:
                     # Core Payment Box Container Fix
                     st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
                     st.error("🔒 Export Premium Feature Locked")
-                    st.info(f"Your list has been optimized completely error-free! Upgrade to premium to instantly download all processed outbound entries.")
+                    st.info("Your list has been optimized completely error-free! Upgrade to premium to instantly download all processed outbound entries.")
                     st.link_button("💳 Unlock Full Download Access (£9/mo)", "https://stripe.com")
         else:
             st.info("💡 Standby. Feed data into the ingestion nodes or click the 'Ingest Mock System Sample Dataset' button to fire up the live terminal visualization layout pipeline.")
