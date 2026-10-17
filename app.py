@@ -25,13 +25,35 @@ st.markdown("""
     /* Premium Slate Background Canvas Layer */
     .stApp, [data-testid="stAppViewContainer"] {
         background: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%) !important;
-        color: #0f172a !important;
         padding-top: 20px !important;
+    }
+    
+    /* Global Typography Fix - Keep regular text readable without breaking structural blocks */
+    h1, h2, h3, h4, h5, h6, p, li { 
+        color: #0f172a !important; 
+        font-family: 'Inter', system-ui, sans-serif !important; 
+    }
+    
+    /* Fix for Streamlit Tabs - Dark text labels on light tabs background */
+    button[data-baseweb="tab"] p {
+        color: #334155 !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+    }
+    button[data-baseweb="tab"][aria-selected="true"] p {
+        color: #2563eb !important;
+    }
+    
+    /* Fix for Checkbox Labels - Bold, crisp slate text next to selectors */
+    [data-testid="stCheckbox"] label p {
+        color: #1e293b !important;
+        font-weight: 500 !important;
+        font-size: 14px !important;
     }
     
     /* 3D Soft Extruded Card Blocks */
     .premium-card {
-        background: rgba(255, 255, 255, 0.85);
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         padding: 30px;
@@ -88,7 +110,7 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.3
+            💎 Core Build v4.4
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -106,7 +128,7 @@ with tab1:
         st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 13px; margin: 15px 0; font-weight:600;'>— OR —</p>", unsafe_allow_html=True)
         use_sample = st.button("💡 Ingest Mock System Sample Dataset")
         
-        st.markdown("<div style='margin: 30px 0; border-top: 1px solid rgba(0,0,0,0.05);'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='margin: 30px 0; border-top: 1px solid rgba(15, 23, 42, 0.08);'></div>", unsafe_allow_html=True)
         st.markdown("### 🛠️ Configurable Optimization Filters")
         clean_names = st.checkbox("Format and Capitalise Prospect Names", value=True)
         clean_emails = st.checkbox("Enforce Universal Lowercase Records on Emails", value=True)
@@ -181,10 +203,3 @@ with tab2:
     p_col1.metric("Average Processing Velocity", "0.004s / file")
     p_col2.metric("Execution Engine Availability", "100.00%")
     p_col3.metric("System Server Cluster Overhead", "0.001% load")
-    st.markdown("</div>", unsafe_allow_html=True)
-
-with tab3:
-    st.markdown("<div class='premium-card'>", unsafe_allow_html=True)
-    st.markdown("### 🛡️ Enterprise Data Compliance & Protocol Governance Verification")
-    st.info("🔐 Security Architecture Protocol Memo: LeadFormat Agent functions inside transient local volatile RAM execution parameters. Your uploaded databases are never committed to permanent storage arrays or external public engines.")
-    st.markdown("</div>", unsafe_allow_html=True)
