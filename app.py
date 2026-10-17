@@ -29,9 +29,27 @@ st.markdown("""
     }
     
     /* Global Typography Fix - Keep regular text readable without breaking structural blocks */
-    h1, h2, h3, h4, h5, h6, p, li { 
+    h1, h2, h3, h4, h5, h6, p, li, label { 
         color: #0f172a !important; 
         font-family: 'Inter', system-ui, sans-serif !important; 
+    }
+    
+    /* FIX FOR UPLOAD BOX: Remove the dark grey background and give it a crisp premium look */
+    [data-testid="stFileUploader"] {
+        background-color: #ffffff !important;
+        border: 2px dashed #cbd5e1 !important;
+        border-radius: 12px !important;
+        padding: 10px !important;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.02) !important;
+    }
+    [data-testid="stFileUploader"] section {
+        background-color: #ffffff !important;
+    }
+    [data-testid="stFileUploaderDropzone"] {
+        background-color: #f8fafc !important;
+    }
+    [data-testid="stFileUploader"] div, [data-testid="stFileUploader"] span {
+        color: #475569 !important;
     }
     
     /* Fix for Streamlit Tabs - Dark text labels on light tabs background */
@@ -110,7 +128,7 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.4
+            💎 Core Build v4.5
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -191,15 +209,3 @@ with tab1:
                     # Premium Paywall container module linked directly to your active Stripe account
                     st.success("🔒 Export Premium Feature Locked")
                     st.write("Upgrade to premium to instantly download all outbound entries.")
-                    st.link_button("💳 Unlock Full Download Access (£9/mo)", "https://stripe.com")
-        else:
-            st.info("💡 Standby. Feed data into the ingestion nodes or click the 'Ingest Mock System Sample Dataset' button to fire up the live terminal visualization layout pipeline.")
-    st.markdown("</div>", unsafe_allow_html=True)
-
-with tab2:
-    st.markdown("<div class='premium-card'>", unsafe_allow_html=True)
-    st.markdown("### 📈 Cloud Operation System Architecture Metrics")
-    p_col1, p_col2, p_col3 = st.columns(3)
-    p_col1.metric("Average Processing Velocity", "0.004s / file")
-    p_col2.metric("Execution Engine Availability", "100.00%")
-    p_col3.metric("System Server Cluster Overhead", "0.001% load")
