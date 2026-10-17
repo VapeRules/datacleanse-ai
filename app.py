@@ -13,7 +13,7 @@ st.set_page_config(
 # High-Tier 3D Glassmorphism UI Stylesheet Injection
 st.markdown("""
     <style>
-    /* Hide the default Streamlit main menu, footer, and GitHub header links completely */
+    /* CRITICAL SECURITY: Hide the default Streamlit main menu, footer, and GitHub header links completely */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden !important;}
@@ -119,6 +119,8 @@ with tab1:
         df = None
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
+            # SMART FIX: Drop any empty index columns like "Unnamed: 0"
+            df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
         elif use_sample:
             sample_data = {
                 "Full Name": ["jOHN sMITH", "sarah connor", "  bOB mARLEY ", "john smith", "alice green", "david beckham"],
@@ -138,14 +140,19 @@ with tab1:
                 with st.spinner("Executing rule matrices..."):
                     
                     for column in df.columns:
-                        if df[column].dtype == 'object':
-                            col_lower = column.lower()
-                            if "email" in col_lower and clean_emails:
-                                df[column] = df[column].astype(str).str.lower().str.strip()
-                            elif ("name" in col_lower or "first" in col_lower or "last" in col_lower) and clean_names:
-                                df[column] = df[column].astype(str).str.strip().str.title()
-                            elif ("phone" in col_lower or "mobile" in col_lower or "tel" in col_lower) and clean_phones:
-                                df[column] = df[column].astype(str).apply(lambda x: re.sub(r'\D', '', x))
+                        col_lower = str(column).lower().strip()
+                        
+                        # Email Standardizer
+                        if "email" in col_lower and clean_emails:
+                            df[column] = df[column].astype(str).str.lower().str.strip()
+                            
+                        # Name Standardizer
+                        elif ("name" in col_lower or "first" in col_lower or "last" in col_lower) and clean_names:
+                            df[column] = df[column].astype(str).str.strip().str.title()
+                            
+                        # Phone Number Standardizer
+                        elif ("phone" in col_lower or "mobile" in col_lower or "tel" in col_lower) and clean_phones:
+                            df[column] = df[column].astype(str).apply(lambda x: re.sub(r'\D', '', x))
                     
                     if remove_dup:
                         df = df.drop_duplicates()
@@ -157,7 +164,6 @@ with tab1:
                     st.markdown("---")
                     st.markdown("### 📊 Pipeline Structural Metrics View")
                     
-                    # Clean layout parameters without using complex python templates
                     m1, m2, m3 = st.columns(3)
                     m1.metric("Optimized Records", final_row_count)
                     m2.metric("Duplicates Deleted", duplicates_removed)
