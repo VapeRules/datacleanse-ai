@@ -119,7 +119,7 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.8
+            💎 Core Build v5.0
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -179,7 +179,12 @@ with tab1:
                         elif ("name" in col_lower or "first" in col_lower or "last" in col_lower) and clean_names:
                             df[column] = df[column].astype(str).str.strip().str.title()
                         elif ("phone" in col_lower or "mobile" in col_lower or "tel" in col_lower) and clean_phones:
-                            df[column] = df[column].astype(str).apply(lambda x: re.sub(r'\D', '', x))
+                            def fix_phone(val):
+                                val_str = str(val).strip()
+                                has_plus = val_str.startswith('+')
+                                clean_digits = re.sub(r'\D', '', val_str)
+                                return f"+{clean_digits}" if (has_plus and clean_digits) else clean_digits
+                            df[column] = df[column].apply(fix_phone)
                     
                     if remove_dup:
                         df = df.drop_duplicates()
@@ -199,7 +204,6 @@ with tab1:
                     st.markdown("#### `Cleaned System Buffer Output Preview (First 3 Rows):`")
                     st.dataframe(df.head(3), use_container_width=True)
                     
-                    # Premium Paywall container module with raw HTML beveled button fix
                     st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
                     st.error("🔒 Export Premium Feature Locked")
                     st.info("Your list has been optimized completely error-free! Upgrade to premium to instantly download all processed outbound entries.")
