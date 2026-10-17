@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import re
 
-# Premium platform styling configuration
+# Premium platform styling configuration with hidden header bars
 st.set_page_config(
     page_title="LeadFormat Agent | Enterprise Data Optimization", 
     page_icon="🛡️", 
@@ -13,14 +13,20 @@ st.set_page_config(
 # High-Tier 3D Glassmorphism UI Stylesheet Injection
 st.markdown("""
     <style>
+    /* CRITICAL SECURITY: Hide the default Streamlit main menu, footer, and GitHub header links completely */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden !important;}
+    [data-testid="stHeader"] {display: none !important;}
+    [data-testid="stAppDeployButton"] {display: none !important;}
+    [data-testid="stDecoration"] {display: none !important;}
+    .viewerBadge {display: none !important;}
+    
     /* Premium Slate Background Canvas Layer */
     .stApp, [data-testid="stAppViewContainer"] {
         background: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%) !important;
         color: #0f172a !important;
-    }
-    
-    header, [data-testid="stHeader"] {
-        background-color: transparent !important;
+        padding-top: 20px !important;
     }
     
     /* 3D Soft Extruded Card Blocks */
@@ -80,10 +86,6 @@ st.markdown("""
         transform: translateY(-1px);
         box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
     }
-    .stButton>button:active {
-        transform: translateY(1px);
-        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
-    }
     
     /* Deep 3D Paywall Vault container layer */
     .paywall-box-3d {
@@ -129,7 +131,7 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.0
+            💎 Core Build v4.1
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -204,5 +206,3 @@ with tab1:
                     with m_col2:
                         st.markdown(f"<div class='metric-card-3d'><div class='metric-val' style='color:#dc2626;'>{duplicates_removed}</div><div class='metric-lbl'>Duplicates Liquidated</div></div>", unsafe_allow_html=True)
                     with m_col3:
-                        st.markdown(f"<div class='metric-card-3d'><div class='metric-val' style='color:#16a34a;'>{total_operations}</div><div class='metric-lbl'>Cells Validated</div></div>", unsafe_allow_html=True)
-                    
