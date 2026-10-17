@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit st
 import pandas as pd
 import re
 
@@ -13,7 +13,7 @@ st.set_page_config(
 # High-Tier 3D Glassmorphism UI Stylesheet Injection
 st.markdown("""
     <style>
-    /* CRITICAL SECURITY: Hide the default Streamlit main menu, footer, and GitHub header links completely */
+    /* Hide the default Streamlit main menu, footer, and GitHub header links completely */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden !important;}
@@ -88,7 +88,7 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.2
+            💎 Core Build v4.3
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -119,7 +119,6 @@ with tab1:
         df = None
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
-            # SMART FIX: Drop any empty index columns like "Unnamed: 0"
             df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
         elif use_sample:
             sample_data = {
@@ -142,15 +141,10 @@ with tab1:
                     for column in df.columns:
                         col_lower = str(column).lower().strip()
                         
-                        # Email Standardizer
                         if "email" in col_lower and clean_emails:
                             df[column] = df[column].astype(str).str.lower().str.strip()
-                            
-                        # Name Standardizer
                         elif ("name" in col_lower or "first" in col_lower or "last" in col_lower) and clean_names:
                             df[column] = df[column].astype(str).str.strip().str.title()
-                            
-                        # Phone Number Standardizer
                         elif ("phone" in col_lower or "mobile" in col_lower or "tel" in col_lower) and clean_phones:
                             df[column] = df[column].astype(str).apply(lambda x: re.sub(r'\D', '', x))
                     
@@ -172,7 +166,7 @@ with tab1:
                     st.markdown("#### `Cleaned System Buffer Output Preview (First 3 Rows):`")
                     st.dataframe(df.head(3), use_container_width=True)
                     
-                    # Premium Paywall container module
+                    # Premium Paywall container module linked directly to your active Stripe account
                     st.success("🔒 Export Premium Feature Locked")
                     st.write("Upgrade to premium to instantly download all outbound entries.")
                     st.link_button("💳 Unlock Full Download Access (£9/mo)", "https://stripe.com")
