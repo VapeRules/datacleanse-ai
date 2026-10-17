@@ -119,7 +119,7 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.7
+            💎 Core Build v4.8
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -199,11 +199,30 @@ with tab1:
                     st.markdown("#### `Cleaned System Buffer Output Preview (First 3 Rows):`")
                     st.dataframe(df.head(3), use_container_width=True)
                     
-                    # Core Payment Box Container Fix
+                    # Premium Paywall container module with raw HTML beveled button fix
                     st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
                     st.error("🔒 Export Premium Feature Locked")
                     st.info("Your list has been optimized completely error-free! Upgrade to premium to instantly download all processed outbound entries.")
-                    st.link_button("💳 Unlock Full Download Access (£9/mo)", "https://stripe.com")
+                    
+                    st.markdown(f"""
+                        <div style='margin-top: 20px; text-align: left;'>
+                            <a href='https://stripe.com' target='_blank' style='
+                                display: inline-block;
+                                background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+                                color: #ffffff !important;
+                                padding: 14px 32px;
+                                font-family: "Inter", sans-serif;
+                                font-weight: 700;
+                                font-size: 15px;
+                                text-decoration: none;
+                                border-radius: 12px;
+                                border: 1px solid #1d4ed8;
+                                box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+                                text-align: center;
+                                cursor: pointer;
+                            '>💳 Unlock Full Download Access (£9/mo)</a>
+                        </div>
+                    """, unsafe_allow_html=True)
         else:
             st.info("💡 Standby. Feed data into the ingestion nodes or click the 'Ingest Mock System Sample Dataset' button to fire up the live terminal visualization layout pipeline.")
     st.markdown("</div>", unsafe_allow_html=True)
