@@ -206,7 +206,7 @@ with tab1:
                     
                     st.markdown(f"""
                         <div style='margin-top: 20px; text-align: left;'>
-                            <a href='https://stripe.com' target='_blank' style='
+                            <a href='PASTE_YOUR_REAL_LIVE_STRIPE_LINK_HERE_FROM_YOUR_CLIPBOARD' target='_blank' style='
                                 display: inline-block;
                                 background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
                                 color: #ffffff !important;
