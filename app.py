@@ -34,12 +34,12 @@ st.markdown("""
         font-family: 'Inter', system-ui, sans-serif !important; 
     }
     
-    /* FIX FOR UPLOAD BOX: Remove the dark grey background and give it a crisp premium look */
+    /* FIX FOR UPLOAD BOX: Crisp premium dashed card container look */
     [data-testid="stFileUploader"] {
         background-color: #ffffff !important;
         border: 2px dashed #cbd5e1 !important;
         border-radius: 12px !important;
-        padding: 10px !important;
+        padding: 15px !important;
         box-shadow: inset 0 1px 3px rgba(0,0,0,0.02) !important;
     }
     [data-testid="stFileUploader"] section {
@@ -50,6 +50,21 @@ st.markdown("""
     }
     [data-testid="stFileUploader"] div, [data-testid="stFileUploader"] span {
         color: #475569 !important;
+    }
+    
+    /* INTERNAL UPLOAD BUTTON FIX: Turn the black button into crisp corporate blue */
+    [data-testid="stFileUploaderDropzone"] button {
+        background-color: #2563eb !important;
+        color: white !important;
+        border-radius: 8px !important;
+        border: none !important;
+        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2) !important;
+    }
+    [data-testid="stFileUploaderDropzone"] button:hover {
+        background-color: #1d4ed8 !important;
+    }
+    [data-testid="stFileUploaderDropzone"] svg {
+        fill: white !important;
     }
     
     /* Fix for Streamlit Tabs - Dark text labels on light tabs background */
@@ -202,10 +217,3 @@ with tab1:
                     m1.metric("Optimized Records", final_row_count)
                     m2.metric("Duplicates Deleted", duplicates_removed)
                     m3.metric("Cells Validated", total_operations)
-                    
-                    st.markdown("#### `Cleaned System Buffer Output Preview (First 3 Rows):`")
-                    st.dataframe(df.head(3), use_container_width=True)
-                    
-                    # Premium Paywall container module linked directly to your active Stripe account
-                    st.success("🔒 Export Premium Feature Locked")
-                    st.write("Upgrade to premium to instantly download all outbound entries.")
