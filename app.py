@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import re
 
-# 1. Force light mode configuration at the platform architecture layer
+# Premium platform styling configuration
 st.set_page_config(
     page_title="LeadFormat Agent | Enterprise Data Optimization", 
     page_icon="🛡️", 
@@ -10,80 +10,126 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Professional Interface CSS Injection (Forces a beautiful clean look even in dark mode)
+# High-Tier 3D Glassmorphism UI Stylesheet Injection
 st.markdown("""
     <style>
-    /* Force pristine light theme parameters regardless of browser settings */
+    /* Premium Slate Background Canvas Layer */
     .stApp, [data-testid="stAppViewContainer"] {
-        background-color: #ffffff !important;
+        background: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%) !important;
         color: #0f172a !important;
     }
     
-    /* Ensure sidebar and header elements match */
     header, [data-testid="stHeader"] {
-        background-color: #ffffff !important;
+        background-color: transparent !important;
     }
     
-    /* Global Typography Reset to deep corporate grey/black */
-    h1, h2, h3, h4, h5, h6, p, span, label, .stMarkdown div { 
-        color: #0f172a !important; 
-        font-family: 'Inter', system-ui, sans-serif !important; 
-    }
-    
-    /* Clean layout container modules */
-    .metric-card {
-        background-color: #f8fafc;
-        padding: 20px;
-        border-radius: 12px;
-        border: 1px solid #e2e8f0;
-        text-align: center;
-    }
-    .metric-val { font-size: 26px; font-weight: 700; color: #2563eb !important; }
-    .metric-lbl { font-size: 13px; color: #64748b !important; font-weight: 600; }
-    
-    /* Custom primary execution button states */
-    .stButton>button {
-        background-color: #2563eb !important; 
-        color: white !important; 
-        border-radius: 8px !important; 
-        font-weight: 600 !important;
-        padding: 12px 24px !important;
-        border: none !important;
-        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
-    }
-    .stButton>button:hover { background-color: #1d4ed8 !important; }
-    
-    /* Checkbox text correction */
-    [data-testid="stCheckbox"] p { color: #334155 !important; font-weight: 500; }
-    
-    /* Paywall Container Box styling */
-    .paywall-box {
-        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        border: 2px solid #bfdbfe;
-        border-radius: 14px;
+    /* 3D Soft Extruded Card Blocks */
+    .premium-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         padding: 30px;
-        text-align: center;
-        margin-top: 25px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 
+            0 10px 25px -5px rgba(15, 23, 42, 0.05),
+            0 20px 40px -10px rgba(15, 23, 42, 0.03),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        margin-bottom: 25px;
     }
-    .paywall-title { color: #1e3a8a !important; font-size: 20px !important; font-weight: 800; margin-bottom: 8px; }
-    .paywall-price { font-size: 32px; font-weight: 800; color: #1d4ed8 !important; margin: 15px 0; }
-    .paywall-button {
-        display: inline-block; background-color: #2563eb; color: white !important;
-        padding: 12px 30px; font-weight: 700; border-radius: 8px; text-decoration: none;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    
+    /* Tactile 3D Metric Display Blocks */
+    .metric-card-3d {
+        background: #ffffff;
+        padding: 24px;
+        border-radius: 16px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 
+            0 4px 6px -1px rgba(0, 0, 0, 0.02),
+            0 10px 15px -3px rgba(15, 23, 42, 0.04),
+            inset 0 -3px 0 #edf2f7;
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .metric-card-3d:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 10px 20px -5px rgba(15, 23, 42, 0.08),
+            inset 0 -3px 0 #e2e8f0;
+    }
+    .metric-val { font-size: 32px; font-weight: 800; color: #2563eb !important; letter-spacing: -1px; }
+    .metric-lbl { font-size: 12px; color: #64748b !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+    
+    /* High-Gloss Beveled Primary Action Button */
+    .stButton>button {
+        background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%) !important;
+        color: white !important; 
+        border-radius: 12px !important; 
+        font-weight: 700 !important;
+        padding: 14px 28px !important;
+        border: 1px solid #1d4ed8 !important;
+        box-shadow: 
+            0 4px 12px rgba(37, 99, 235, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.2) !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        transition: all 0.15s ease-in-out;
+    }
+    .stButton>button:hover { 
+        background: linear-gradient(180deg, #4f46e5 0%, #2563eb 100%) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+    .stButton>button:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+    }
+    
+    /* Deep 3D Paywall Vault container layer */
+    .paywall-box-3d {
+        background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+        border: 1px solid #bbf7d0;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        margin-top: 30px;
+        box-shadow: 
+            0 20px 40px -15px rgba(22, 163, 74, 0.08),
+            0 1px 3px rgba(0, 0, 0, 0.02),
+            inset 0 1px 0 #ffffff;
+    }
+    .paywall-title { color: #14532d !important; font-size: 22px !important; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.3px; }
+    .paywall-price { font-size: 42px; font-weight: 900; color: #16a34a !important; margin: 20px 0; letter-spacing: -1px; }
+    .paywall-button-3d {
+        display: inline-block; 
+        background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+        color: white !important;
+        padding: 14px 40px; 
+        font-weight: 700; 
+        border-radius: 12px; 
+        text-decoration: none;
+        border: 1px solid #16a34a;
+        box-shadow: 
+            0 6px 20px rgba(22, 197, 94, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+    .paywall-button-3d:hover {
+        background: linear-gradient(180deg, #4ade80 0%, #16a34a 100%);
+        box-shadow: 0 8px 25px rgba(22, 197, 94, 0.4);
     }
     </style>
 """, unsafe_allow_html=True)
 
 # Application Top Navigation Header Banner
 st.markdown("""
-    <div style='display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; margin-bottom: 30px;'>
+    <div style='display: flex; align-items: center; justify-content: space-between; padding-bottom: 25px; border-bottom: 1px solid rgba(15, 23, 42, 0.08); margin-bottom: 35px;'>
         <div>
-            <h1 style='margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.5px;'>🛡️ LeadFormat <span style='color: #2563eb;'>Agent</span></h1>
-            <p style='margin: 4px 0 0 0; color: #64748b; font-size: 14px;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
+            <h1 style='margin: 0; font-size: 32px; font-weight: 900; letter-spacing: -1px; color: #0f172a;'>🛡️ LeadFormat <span style='color: #2563eb;'>Agent</span></h1>
+            <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
-        <div style='background-color: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid #bae6fd;'>
-            💎 Core Build v3.1
+        <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
+            💎 Core Build v4.0
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -91,16 +137,17 @@ st.markdown("""
 tab1, tab2, tab3 = st.tabs(["🚀 Automated Pipeline Engine", "📊 View Platform Performance", "🔒 Compliance & Infrastructure Information"])
 
 with tab1:
+    st.markdown("<div class='premium-card'>", unsafe_allow_html=True)
     col_left, col_right = st.columns(2, gap="large")
     
     with col_left:
         st.markdown("### 📥 Pipeline Ingestion Nodes")
-        uploaded_file = st.file_uploader("", type=["csv"])
+        uploaded_file = st.file_uploader("Upload your messy CSV file here", type=["csv"])
         
-        st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 13px; margin: 10px 0;'>— OR —</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 13px; margin: 15px 0; font-weight:600;'>— OR —</p>", unsafe_allow_html=True)
         use_sample = st.button("💡 Ingest Mock System Sample Dataset")
         
-        st.markdown("---")
+        st.markdown("<div style='margin: 30px 0; border-top: 1px solid rgba(0,0,0,0.05);'></div>", unsafe_allow_html=True)
         st.markdown("### 🛠️ Configurable Optimization Filters")
         clean_names = st.checkbox("Format and Capitalise Prospect Names", value=True)
         clean_emails = st.checkbox("Enforce Universal Lowercase Records on Emails", value=True)
@@ -127,6 +174,7 @@ with tab1:
             st.markdown(f"#### `Raw Input Buffer View: {initial_row_count} data rows detected`")
             st.dataframe(df.head(3), use_container_width=True)
             
+            st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
             if st.button("⚡ Execute Global Optimization Routine"):
                 with st.spinner("Executing rule matrices..."):
                     
@@ -152,34 +200,9 @@ with tab1:
                     
                     m_col1, m_col2, m_col3 = st.columns(3)
                     with m_col1:
-                        st.markdown(f"<div class='metric-card'><div class='metric-val'>{final_row_count}</div><div class='metric-lbl'>Optimized Records</div></div>", unsafe_allow_html=True)
+                        st.markdown(f"<div class='metric-card-3d'><div class='metric-val'>{final_row_count}</div><div class='metric-lbl'>Optimized Records</div></div>", unsafe_allow_html=True)
                     with m_col2:
-                        st.markdown(f"<div class='metric-card'><div class='metric-val' style='color:#dc2626;'>{duplicates_removed}</div><div class='metric-lbl'>Duplicates Liquidated</div></div>", unsafe_allow_html=True)
+                        st.markdown(f"<div class='metric-card-3d'><div class='metric-val' style='color:#dc2626;'>{duplicates_removed}</div><div class='metric-lbl'>Duplicates Liquidated</div></div>", unsafe_allow_html=True)
                     with m_col3:
-                        st.markdown(f"<div class='metric-card'><div class='metric-val' style='color:#16a34a;'>{total_operations}</div><div class='metric-lbl'>Cells Validated</div></div>", unsafe_allow_html=True)
+                        st.markdown(f"<div class='metric-card-3d'><div class='metric-val' style='color:#16a34a;'>{total_operations}</div><div class='metric-lbl'>Cells Validated</div></div>", unsafe_allow_html=True)
                     
-                    st.markdown("<div style='margin: 15px 0;'></div>", unsafe_allow_html=True)
-                    st.markdown("#### `Cleaned System Buffer Output Preview (First 3 Rows):`")
-                    st.dataframe(df.head(3), use_container_width=True)
-                    
-                    st.markdown(f"""
-                        <div class="paywall-box">
-                            <div class="paywall-title">🔒 Export Premium Feature Locked</div>
-                            <div style="color: #475569; font-size: 14px; font-weight:500;">Your list has been optimized completely error-free! Upgrade to premium to export all <b>{final_row_count} processed entries</b> directly into outbound tools.</div>
-                            <div class="paywall-price">£9 <span style="font-size:14px; color:#64748b; font-weight:normal;">/ month</span></div>
-                            <a href="https://stripe.com" target="_blank" class="paywall-button">Unlock Full Download Access</a>
-                        </div>
-                    """, unsafe_allow_html=True)
-        else:
-            st.info("💡 Standby. Feed data into the ingestion nodes or click the 'Ingest Mock System Sample Dataset' button to fire up the live terminal visualization layout pipeline.")
-
-with tab2:
-    st.markdown("### 📈 Cloud Operation System Architecture Metrics")
-    p_col1, p_col2, p_col3 = st.columns(3)
-    p_col1.metric("Average Processing Velocity", "0.004s / file", "98.2% faster than manual compilation")
-    p_col2.metric("Execution Engine Availability", "100.00%", "No errors reported")
-    p_col3.metric("System Server Cluster Overhead", "0.001% load", "Optimal performance tier")
-
-with tab3:
-    st.markdown("### 🛡️ Enterprise Data Compliance & Protocol Governance Verification")
-    st.info("🔐 Security Architecture Protocol Memo: LeadFormat Agent functions inside transient local volatile RAM execution parameters. Your uploaded databases are never committed to permanent storage arrays or external public engines.")
