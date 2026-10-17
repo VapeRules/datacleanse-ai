@@ -87,32 +87,12 @@ st.markdown("""
     /* 3D Soft Extruded Card Blocks */
     .premium-card {
         background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        padding: 30px;
         border-radius: 20px;
         border: 1px solid rgba(255, 255, 255, 0.7);
-        box-shadow: 
-            0 10px 25px -5px rgba(15, 23, 42, 0.05),
-            0 20px 40px -10px rgba(15, 23, 42, 0.03),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        padding: 30px;
         margin-bottom: 25px;
+        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
     }
-    
-    /* Tactile 3D Metric Display Blocks */
-    .metric-card-3d {
-        background: #ffffff;
-        padding: 24px;
-        border-radius: 16px;
-        border: 1px solid #e2e8f0;
-        box-shadow: 
-            0 4px 6px -1px rgba(0, 0, 0, 0.02),
-            0 10px 15px -3px rgba(15, 23, 42, 0.04),
-            inset 0 -3px 0 #edf2f7;
-        text-align: center;
-    }
-    .metric-val { font-size: 32px; font-weight: 800; color: #2563eb !important; letter-spacing: -1px; }
-    .metric-lbl { font-size: 12px; color: #64748b !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
     
     /* High-Gloss Beveled Primary Action Button */
     .stButton>button {
@@ -122,11 +102,7 @@ st.markdown("""
         font-weight: 700 !important;
         padding: 14px 28px !important;
         border: 1px solid #1d4ed8 !important;
-        box-shadow: 
-            0 4px 12px rgba(37, 99, 235, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4),
-            inset 0 -2px 0 rgba(0, 0, 0, 0.2) !important;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
     }
     .stButton>button:hover { 
         background: linear-gradient(180deg, #4f46e5 0%, #2563eb 100%) !important;
@@ -143,7 +119,7 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.5
+            💎 Core Build v4.6
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -217,3 +193,17 @@ with tab1:
                     m1.metric("Optimized Records", final_row_count)
                     m2.metric("Duplicates Deleted", duplicates_removed)
                     m3.metric("Cells Validated", total_operations)
+                    
+                    st.markdown("#### `Cleaned System Buffer Output Preview (First 3 Rows):`")
+                    st.dataframe(df.head(3), use_container_width=True)
+                    
+                    # Core Payment Box Container Fix
+                    st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
+                    st.error("🔒 Export Premium Feature Locked")
+                    st.info(f"Your list has been optimized completely error-free! Upgrade to premium to instantly download all processed outbound entries.")
+                    st.link_button("💳 Unlock Full Download Access (£9/mo)", "https://stripe.com")
+        else:
+            st.info("💡 Standby. Feed data into the ingestion nodes or click the 'Ingest Mock System Sample Dataset' button to fire up the live terminal visualization layout pipeline.")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with tab2:
