@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import re
 
-# Premium platform styling configuration
+# 1. Force light mode configuration at the platform architecture layer
 st.set_page_config(
     page_title="LeadFormat Agent | Enterprise Data Optimization", 
     page_icon="🛡️", 
@@ -10,24 +10,51 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom Corporate CSS with Paywall Box styling
+# Professional Interface CSS Injection (Forces a beautiful clean look even in dark mode)
 st.markdown("""
     <style>
-    .main { background-color: #f8fafc; }
-    h1, h2, h3 { color: #0f172a !important; font-family: 'Inter', system-ui, sans-serif; }
-    
-    .metric-card {
-        background-color: #ffffff; padding: 20px; border-radius: 12px;
-        border: 1px solid #e2e8f0; text-align: center;
+    /* Force pristine light theme parameters regardless of browser settings */
+    .stApp, [data-testid="stAppViewContainer"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
     }
-    .metric-val { font-size: 24px; font-weight: 700; color: #2563eb; }
-    .metric-lbl { font-size: 13px; color: #64748b; font-weight: 500; }
     
+    /* Ensure sidebar and header elements match */
+    header, [data-testid="stHeader"] {
+        background-color: #ffffff !important;
+    }
+    
+    /* Global Typography Reset to deep corporate grey/black */
+    h1, h2, h3, h4, h5, h6, p, span, label, .stMarkdown div { 
+        color: #0f172a !important; 
+        font-family: 'Inter', system-ui, sans-serif !important; 
+    }
+    
+    /* Clean layout container modules */
+    .metric-card {
+        background-color: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        text-align: center;
+    }
+    .metric-val { font-size: 26px; font-weight: 700; color: #2563eb !important; }
+    .metric-lbl { font-size: 13px; color: #64748b !important; font-weight: 600; }
+    
+    /* Custom primary execution button states */
     .stButton>button {
-        background-color: #2563eb !important; color: white !important; 
-        border-radius: 8px !important; font-weight: 600 !important; padding: 12px 24px !important;
+        background-color: #2563eb !important; 
+        color: white !important; 
+        border-radius: 8px !important; 
+        font-weight: 600 !important;
+        padding: 12px 24px !important;
+        border: none !important;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
     }
     .stButton>button:hover { background-color: #1d4ed8 !important; }
+    
+    /* Checkbox text correction */
+    [data-testid="stCheckbox"] p { color: #334155 !important; font-weight: 500; }
     
     /* Paywall Container Box styling */
     .paywall-box {
@@ -37,16 +64,14 @@ st.markdown("""
         padding: 30px;
         text-align: center;
         margin-top: 25px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
     .paywall-title { color: #1e3a8a !important; font-size: 20px !important; font-weight: 800; margin-bottom: 8px; }
-    .paywall-price { font-size: 32px; font-weight: 800; color: #1d4ed8; margin: 15px 0; }
+    .paywall-price { font-size: 32px; font-weight: 800; color: #1d4ed8 !important; margin: 15px 0; }
     .paywall-button {
         display: inline-block; background-color: #2563eb; color: white !important;
         padding: 12px 30px; font-weight: 700; border-radius: 8px; text-decoration: none;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); transition: background 0.2s;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
     }
-    .paywall-button:hover { background-color: #1d4ed8; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -58,7 +83,7 @@ st.markdown("""
             <p style='margin: 4px 0 0 0; color: #64748b; font-size: 14px;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background-color: #e0f2fe; color: #0369a1; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid #bae6fd;'>
-            💎 Core Build v3.0
+            💎 Core Build v3.1
         </div>
     </div>
 """, unsafe_allow_html=True)
@@ -135,18 +160,14 @@ with tab1:
                     
                     st.markdown("<div style='margin: 15px 0;'></div>", unsafe_allow_html=True)
                     st.markdown("#### `Cleaned System Buffer Output Preview (First 3 Rows):`")
-                    
-                    # FREE TRIAL PREVIEW: Show only the first 3 cleaned rows
                     st.dataframe(df.head(3), use_container_width=True)
                     
-                    # THE ENTERPRISE PAYWALL COMPONENT BOX
                     st.markdown(f"""
                         <div class="paywall-box">
                             <div class="paywall-title">🔒 Export Premium Feature Locked</div>
-                            <div style="color: #475569; font-size: 14px;">Your list has been optimized completely error-free! Upgrade to premium to export all <b>{final_row_count} processed entries</b> directly into outreach systems.</div>
+                            <div style="color: #475569; font-size: 14px; font-weight:500;">Your list has been optimized completely error-free! Upgrade to premium to export all <b>{final_row_count} processed entries</b> directly into outbound tools.</div>
                             <div class="paywall-price">£9 <span style="font-size:14px; color:#64748b; font-weight:normal;">/ month</span></div>
                             <a href="https://stripe.com" target="_blank" class="paywall-button">Unlock Full Download Access</a>
-                            <div style="font-size:11px; color:#94a3b8; margin-top:10px;">Instant activation • Secure Stripe payment infrastructure</div>
                         </div>
                     """, unsafe_allow_html=True)
         else:
@@ -161,4 +182,4 @@ with tab2:
 
 with tab3:
     st.markdown("### 🛡️ Enterprise Data Compliance & Protocol Governance Verification")
-    st.info("🔐 Security Architecture Protocol Memo: LeadFormat Agent functions inside transient local volatile RAM execution parameters. Your uploaded enterprise customer arrays, corporate personnel directories, and marketing databases are never committed to permanent disc storage arrays, never indexed locally, and are never routed to external public engines for training model purposes.")
+    st.info("🔐 Security Architecture Protocol Memo: LeadFormat Agent functions inside transient local volatile RAM execution parameters. Your uploaded databases are never committed to permanent storage arrays or external public engines.")
