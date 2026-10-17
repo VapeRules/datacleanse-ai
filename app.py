@@ -119,10 +119,14 @@ st.markdown("""
             <p style='margin: 6px 0 0 0; color: #475569; font-size: 15px; font-weight: 500;'>Deterministic data pipeline optimization engineering for outbound B2B operations.</p>
         </div>
         <div style='background: #ffffff; color: #2563eb; padding: 8px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;'>
-            💎 Core Build v4.6
+            💎 Core Build v4.7
         </div>
     </div>
 """, unsafe_allow_html=True)
+
+# Initialize Vault Memory loops safely
+if 'data_frame' not in st.session_state:
+    st.session_state.data_frame = None
 
 tab1, tab2, tab3 = st.tabs(["🚀 Automated Pipeline Engine", "📊 View Platform Performance", "🔒 Compliance & Infrastructure Information"])
 with tab1:
@@ -133,9 +137,20 @@ with tab1:
         st.markdown("### 📥 Pipeline Ingestion Nodes")
         uploaded_file = st.file_uploader("Upload your messy CSV file here", type=["csv"])
         
-        st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 13px; margin: 15px 0; font-weight:600;'>— OR —</p>", unsafe_allow_html=True)
-        use_sample = st.button("💡 Ingest Mock System Sample Dataset")
+        if uploaded_file is not None:
+            df_upload = pd.read_csv(uploaded_file)
+            st.session_state.data_frame = df_upload.loc[:, ~df_upload.columns.str.contains('^Unnamed')]
         
+        st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 13px; margin: 15px 0; font-weight:600;'>— OR —</p>", unsafe_allow_html=True)
+        if st.button("💡 Ingest Mock System Sample Dataset"):
+            sample_data = {
+                "Full Name": ["jOHN sMITH", "sarah connor", "  bOB mARLEY ", "john smith", "alice green", "david beckham"],
+                "Email Address": ["   JOHN.SMITH@GMAIL.COM", "Sarah.Connor@Yahoo.com", "bob@marley.com", "john.smith@gmail.com", "ALICE@GROWTH.COM", "DB@INFO.CO.UK"],
+                "Phone Number": ["1-234-567-8901", "+1 (555) 019-2834", "5551234567", "12345678901", "447123456789", "07123456789"]
+            }
+            st.session_state.data_frame = pd.DataFrame(sample_data)
+            st.toast("⚡ Mock enterprise pipeline array loaded!", icon="💾")
+
         st.markdown("<div style='margin: 30px 0; border-top: 1px solid rgba(15, 23, 42, 0.08);'></div>", unsafe_allow_html=True)
         st.markdown("### 🛠️ Configurable Optimization Filters")
         clean_names = st.checkbox("Format and Capitalise Prospect Names", value=True)
@@ -146,20 +161,8 @@ with tab1:
     with col_right:
         st.markdown("### 🖥️ Active Data Stream Processing Terminal")
         
-        df = None
-        if uploaded_file is not None:
-            df = pd.read_csv(uploaded_file)
-            df = df.loc[:, ~df.columns.str.contains('^Unnamed')]
-        elif use_sample:
-            sample_data = {
-                "Full Name": ["jOHN sMITH", "sarah connor", "  bOB mARLEY ", "john smith", "alice green", "david beckham"],
-                "Email Address": ["   JOHN.SMITH@GMAIL.COM", "Sarah.Connor@Yahoo.com", "bob@marley.com", "john.smith@gmail.com", "ALICE@GROWTH.COM", "DB@INFO.CO.UK"],
-                "Phone Number": ["1-234-567-8901", "+1 (555) 019-2834", "5551234567", "12345678901", "447123456789", "07123456789"]
-            }
-            df = pd.DataFrame(sample_data)
-            st.toast("⚡ Mock enterprise pipeline array loaded!", icon="💾")
-
-        if df is not None:
+        if st.session_state.data_frame is not None:
+            df = st.session_state.data_frame.copy()
             initial_row_count = len(df)
             st.markdown(f"#### `Raw Input Buffer View: {initial_row_count} data rows detected`")
             st.dataframe(df.head(3), use_container_width=True)
@@ -200,7 +203,7 @@ with tab1:
                     st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
                     st.error("🔒 Export Premium Feature Locked")
                     st.info("Your list has been optimized completely error-free! Upgrade to premium to instantly download all processed outbound entries.")
-                    st.link_button("💳 Unlock Full Download Access (£9/mo)", "https://buy.stripe.com/00w28r7rVgxP5SNdiPabK00")
+                    st.link_button("💳 Unlock Full Download Access (£9/mo)", "https://stripe.com")
         else:
             st.info("💡 Standby. Feed data into the ingestion nodes or click the 'Ingest Mock System Sample Dataset' button to fire up the live terminal visualization layout pipeline.")
     st.markdown("</div>", unsafe_allow_html=True)
